@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>儿童学习提醒助手</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 学习提醒助手</h1>
+            <p class="subtitle">养成健康学习习惯</p>
+        </header>
+
+        <main>
+            <!-- 摄像头预览区域 (V2.0) -->
+            <div id="cameraSection" class="camera-section hidden">
+                <div class="camera-container">
+                    <video id="cameraPreview" autoplay playsinline muted></video>
+                    <div id="cameraStatus" class="camera-status">等待检测...</div>
+                </div>
+            </div>
+
+            <!-- 计时器显示区域 -->
+            <div class="timer-display">
+                <span id="timer">00:00:00</span>
+                <p id="timerStatus" class="timer-status">点击开始学习</p>
+            </div>
+
+            <!-- 控制按钮 -->
+            <div class="controls">
+                <button id="startBtn" class="btn btn-start">开始学习</button>
+                <button id="pauseBtn" class="btn btn-pause" disabled>暂停</button>
+                <button id="resetBtn" class="btn btn-reset">重置</button>
+            </div>
+
+            <!-- 模式切换 (V2.0) -->
+            <div class="mode-switch">
+                <label class="switch-label">
+                    <input type="checkbox" id="autoModeSwitch">
+                    <span class="switch-text">📷 智能模式（摄像头自动检测）</span>
+                </label>
+            </div>
+
+            <!-- 设置区域 -->
+            <div class="settings">
+                <button id="settingsBtn" class="btn btn-settings">⚙️ 设置</button>
+            </div>
+
+            <!-- 设置面板 -->
+            <div id="settingsPanel" class="settings-panel hidden">
+                <h3>提醒设置</h3>
+                <div class="setting-item">
+                    <label for="intervalInput">提醒间隔（分钟）：</label>
+                    <input type="number" id="intervalInput" min="1" max="120" value="25">
+                </div>
+                <div class="setting-item">
+                    <label for="soundEnabled">
+                        <input type="checkbox" id="soundEnabled" checked>
+                        启用提示音
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <label for="distractionThreshold">走神提醒阈值（秒）：</label>
+                    <input type="number" id="distractionThreshold" min="3" max="30" value="5">
+                </div>
+                <button id="saveSettingsBtn" class="btn btn-save">保存设置</button>
+            </div>
+        </main>
+
+        <!-- 提醒弹窗 -->
+        <div id="reminderModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-icon">🌟</div>
+                <h2 id="reminderTitle">该休息了！</h2>
+                <p id="reminderMessage">请喝水、看看远方，保护眼睛哦~</p>
+                <button id="dismissBtn" class="btn btn-dismiss">我知道了</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>💡 每隔一段时间休息一下，对眼睛更好哦！</p>
+        </footer>
+    </div>
+
+    <script src="js/timer.js"></script>
+    <script src="js/reminder.js"></script>
+    <script src="js/detector.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
